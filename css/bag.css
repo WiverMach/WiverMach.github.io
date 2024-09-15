@@ -1,0 +1,29 @@
+/***********************************************************
+ * Author: Leonard Siu                                     *
+ * Date created: 24 August 2021                            *
+ ***********************************************************/
+.mobileAsideContainer .mobileButtonStyle
+{
+  background-image: url("../images/iconBag.png");
+  background-size: 100%;
+}
+
+.mobileAsideContent
+{
+  background-color: rgb(65,172,244);
+  justify-content: center;
+}
+
+.toggler:checked{z-index: 5;}
+
+/* Show mobile aside content */
+.toggler:checked ~ .mobileAsideContent
+{
+  visibility: visible;
+  opacity: 0.95;
+}
+
+.mobileAsideContainer .toggler:checked ~ .mobileButtonStyle{
+  background-image: url("../images/iconCloseButton.png");
+  z-index: 4;
+}
