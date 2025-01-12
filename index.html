@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu | Bryan's Café</title>
-    <link rel="stylesheet" href="stylesMenu.css">
+    <title>About Bryan's Café</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <a href="about.html">
+            <a href="index.html">
                 <img src="elements/logobryan.png" alt="Bryan's Café Logo" class="nav-logo">
             </a>
             <div class="burger-menu" id="burgerMenu">
@@ -20,128 +19,69 @@
             </div>
             <nav id="navLinks">
                 <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="index.html">Menu</a></li>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- Banner Section -->
         <div class="banner">
-            <img src="SampleImages/menu-banner.jpg" alt="Menu Banner">
-            <div class="banner-logo">
-                <h1>Our Menu</h1>
-            </div>
+            <img src="SampleImages/banner.jpg" alt="Bryan's Café Banner">
+            <img src="elements/logobryan.png" alt="Bryan's Café Logo" class="banner-logo">
         </div>
 
-        <!-- Menu Section -->
-        <section class="menu-section">
-            <h2>Explore Our Offerings</h2>
-            <div class="menu-container">
-                <!-- Menu Items Go Here -->
-                <div class="menu-item">
-                    <img src="SampleImages/item1.jpg" alt="Item 1">
-                    <h3>Espresso</h3>
-                    <p>A rich and creamy espresso shot.</p>
-                    <span>$3.50</span>
-                </div>
-                <div class="menu-item">
-                    <img src="SampleImages/item2.jpg" alt="Item 2">
-                    <h3>Cappuccino</h3>
-                    <p>Classic cappuccino with steamed milk and foam.</p>
-                    <span>$4.00</span>
-                </div>
-                
+        <!-- About Section -->
+        <section class="section">
+            <div class="about-image">
+                <img src="SampleImages/about.jpg" alt="About Bryan's Café">
             </div>
+            <div class="text">
+                <h2>About</h2>
+                <p>
+                    Bryan's Café is the heart of the creative community, a modern and vibrant place where artists and thinkers
+                    gather to share ideas and inspire one another. Located in a bustling city, our café blends a welcoming
+                    atmosphere with the pulse of creativity and innovation.
+                </p>
+            </div>
+        </section>
 
-            <section class="menu-section">
-                <h2>Meals</h2>
-                <div id="meals-container"></div>
-            
-                <h2>Coffee and Hot Chocolates</h2>
-                <div id="coffee-container"></div>
-            
-                <h2>Other Beverages</h2>
-                <div id="other-beverages-container"></div>
-            </section>
-
+        <!-- History Section -->
+        <section class="section">
+            <div class="text">
+                <h2>History</h2>
+                <p>
+                    Founded in the spirit of connection, Bryan's Café has grown to become a landmark for Melbourne's creative minds.
+                    With roots in the underground art scene, we continue to host events, exhibitions, and discussions that shape
+                    the city's cultural landscape.
+                </p>
+            </div>
+            <div class="history-image">
+                <img src="SampleImages/history.jpg" alt="History of Bryan's Café">
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         &copy; <span id="year"></span> Bryan's Café | <a href="privacy.html">Privacy Policy</a>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // Dynamically set the current year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Burger menu functionality
-        const burgerMenu = document.getElementById('burgerMenu');
+        
+        // Burguer menu
+            const burgerMenu = document.getElementById('burgerMenu');
         const navLinks = document.getElementById('navLinks');
+
         burgerMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-
-        
-    // Fetch and display XML data
-        fetch('xml/menu.xml') // Updated path to 'xml/menu.xml'
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data, "application/xml");
-
-                // Meals
-                const meals = xml.getElementsByTagName("meal");
-                let mealsHTML = "";
-                for (let meal of meals) {
-                    mealsHTML += `
-                        <div class="menu-item">
-                            <img src="images/${meal.getElementsByTagName("image")[0].textContent}" alt="${meal.getElementsByTagName("name")[0].textContent}">
-                            <h3>${meal.getElementsByTagName("name")[0].textContent}</h3>
-                            <p>${meal.getElementsByTagName("description")[0].textContent}</p>
-                            <span>${meal.getElementsByTagName("price")[0].textContent}</span>
-                        </div>
-                    `;
-                }
-                document.getElementById("meals-container").innerHTML = mealsHTML;
-
-                // Coffee
-                const coffees = xml.getElementsByTagName("coffee");
-                let coffeeHTML = "<table><tr><th>Size</th><th>Price</th><th>Description</th></tr>";
-                for (let coffee of coffees) {
-                    coffeeHTML += `
-                        <tr>
-                            <td>${coffee.getElementsByTagName("size")[0].textContent}</td>
-                            <td>${coffee.getElementsByTagName("price")[0].textContent}</td>
-                            <td>${coffee.getElementsByTagName("description")[0].textContent}</td>
-                        </tr>
-                    `;
-                }
-                coffeeHTML += "</table>";
-                document.getElementById("coffee-container").innerHTML = coffeeHTML;
-
-                // Other Beverages
-                const otherBeverages = xml.getElementsByTagName("otherBeverage");
-                let beveragesHTML = "<table><tr><th>Name</th><th>Price</th></tr>";
-                for (let beverage of otherBeverages) {
-                    beveragesHTML += `
-                        <tr>
-                            <td>${beverage.getElementsByTagName("name")[0].textContent}</td>
-                            <td>${beverage.getElementsByTagName("price")[0].textContent}</td>
-                        </tr>
-                    `;
-                }
-                beveragesHTML += "</table>";
-                document.getElementById("other-beverages-container").innerHTML = beveragesHTML;
-            })
-            .catch(error => console.error('Error loading the XML file:', error));
+    
+    
     </script>
 </body>
 

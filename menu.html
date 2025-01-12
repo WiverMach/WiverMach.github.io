@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Bryan's Café</title>
+    <link rel="stylesheet" href="stylesMenu.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <img src="elements/logobryan.png" alt="Bryan's Café Logo" class="nav-logo">
+            </a>
+            <div class="burger-menu" id="burgerMenu">
+                &#9776; <!-- Burger Icon -->
+            </div>
+            <nav id="navLinks">
+                <ul>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Banner Section -->
+        <div class="banner">
+            <img src="SampleImages/menu-banner.jpg" alt="Menu Banner">
+            <div class="banner-logo">
+                <h1>Our Menu</h1>
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <section class="menu-section">
+            <h2>Explore Our Offerings</h2>
+            <div class="menu-container">
+                <!-- Menu Items Go Here -->
+                <div class="menu-item">
+                    <img src="SampleImages/item1.jpg" alt="Item 1">
+                    <h3>Espresso</h3>
+                    <p>A rich and creamy espresso shot.</p>
+                    <span>$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <img src="SampleImages/item2.jpg" alt="Item 2">
+                    <h3>Cappuccino</h3>
+                    <p>Classic cappuccino with steamed milk and foam.</p>
+                    <span>$4.00</span>
+                </div>
+                
+            </div>
+
+            <section class="menu-section">
+                <h2>Meals</h2>
+                <div id="meals-container"></div>
+            
+                <h2>Coffee and Hot Chocolates</h2>
+                <div id="coffee-container"></div>
+            
+                <h2>Other Beverages</h2>
+                <div id="other-beverages-container"></div>
+            </section>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="year"></span> Bryan's Café | <a href="privacy.html">Privacy Policy</a>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Dynamically set the current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Burger menu functionality
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        
+    // Fetch and display XML data
+        fetch('xml/menu.xml') // Updated path to 'xml/menu.xml'
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data, "application/xml");
+
+                // Meals
+                const meals = xml.getElementsByTagName("meal");
+                let mealsHTML = "";
+                for (let meal of meals) {
+                    mealsHTML += `
+                        <div class="menu-item">
+                            <img src="images/${meal.getElementsByTagName("image")[0].textContent}" alt="${meal.getElementsByTagName("name")[0].textContent}">
+                            <h3>${meal.getElementsByTagName("name")[0].textContent}</h3>
+                            <p>${meal.getElementsByTagName("description")[0].textContent}</p>
+                            <span>${meal.getElementsByTagName("price")[0].textContent}</span>
+                        </div>
+                    `;
+                }
+                document.getElementById("meals-container").innerHTML = mealsHTML;
+
+                // Coffee
+                const coffees = xml.getElementsByTagName("coffee");
+                let coffeeHTML = "<table><tr><th>Size</th><th>Price</th><th>Description</th></tr>";
+                for (let coffee of coffees) {
+                    coffeeHTML += `
+                        <tr>
+                            <td>${coffee.getElementsByTagName("size")[0].textContent}</td>
+                            <td>${coffee.getElementsByTagName("price")[0].textContent}</td>
+                            <td>${coffee.getElementsByTagName("description")[0].textContent}</td>
+                        </tr>
+                    `;
+                }
+                coffeeHTML += "</table>";
+                document.getElementById("coffee-container").innerHTML = coffeeHTML;
+
+                // Other Beverages
+                const otherBeverages = xml.getElementsByTagName("otherBeverage");
+                let beveragesHTML = "<table><tr><th>Name</th><th>Price</th></tr>";
+                for (let beverage of otherBeverages) {
+                    beveragesHTML += `
+                        <tr>
+                            <td>${beverage.getElementsByTagName("name")[0].textContent}</td>
+                            <td>${beverage.getElementsByTagName("price")[0].textContent}</td>
+                        </tr>
+                    `;
+                }
+                beveragesHTML += "</table>";
+                document.getElementById("other-beverages-container").innerHTML = beveragesHTML;
+            })
+            .catch(error => console.error('Error loading the XML file:', error));
+    </script>
+</body>
+
+</html>
