@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Bryan's Café</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="about.html">
+                <img src="elements/logobryan.png" alt="Bryan's Café Logo" class="nav-logo">
+            </a>
+            <div class="burger-menu" id="burgerMenu">
+                &#9776; <!-- Burger Icon -->
+            </div>
+            <nav id="navLinks">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="privacy-policy">
+            <h1>Privacy Policy</h1>
+            <p>At Bryan's Café, we value your privacy and are committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data.</p>
+
+            <h2>1. Information We Collect</h2>
+            <p>We may collect the following information:</p>
+            <ul>
+                <li>Your name, email address, and contact details when you submit an enquiry.</li>
+                <li>Data related to your visits to our website, including IP address, browser type, and access times.</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <p>Your information is used for the following purposes:</p>
+            <ul>
+                <li>To respond to your enquiries and provide customer service.</li>
+                <li>To improve our website and services.</li>
+                <li>To comply with legal obligations.</li>
+            </ul>
+
+            <h2>3. Sharing Your Information</h2>
+            <p>We do not sell or rent your personal information to third parties. However, we may share your data:</p>
+            <ul>
+                <li>With trusted service providers who assist us in operating our website.</li>
+                <li>If required by law to protect our legal rights.</li>
+            </ul>
+
+            <h2>4. Your Rights</h2>
+            <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us.</p>
+
+            <h2>5. Contact Us</h2>
+            <p>If you have any questions about this policy, please contact us at:</p>
+            <p>Email: <a href="mailto:privacy@bryanscafe.com">privacy@bryanscafe.com</a></p>
+            <p>Phone: 02 1234 5678</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="year"></span> Bryan's Café | <a href="privacy.html">Privacy Policy</a>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Burger menu functionality
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

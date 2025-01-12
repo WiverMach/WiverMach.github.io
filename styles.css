@@ -1,0 +1,254 @@
+/* General Styles */
+:root {
+    --primary-color: #556B2F; /* Olive Green */
+    --secondary-color: #1C1C1C; /* Dark Gray */
+    --background-color: #F8F4EC; /* Soft Beige */
+    --text-color: #4A3623; /* Dark Brown */
+    --accent-color: #D4A373; /* Warm Golden Tone */
+    --hover-color: #B08862; /* Darker Golden Tone */
+    --interaction-color: #78AB46; /* Lighter Olive for interactions */
+    --h1-color: #F8F4EC; /* Soft Beige for H1s */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 100px; /* Set height equivalent */
+    line-height: 1; /* Adjust vertical spacing */
+    margin: 0; /* Remove default margin */
+    color: var(--h1-color); /* Use primary color for consistency */
+    text-align: center;
+    width: auto;
+}
+
+/* End of General Styles section */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    padding: 15px 20px; /* Increase padding for larger screens */
+}
+
+header .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 100px; /* Increase logo height */
+    width: auto;
+}
+
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px; /* Increase font size */
+    transition: color 0.3s, font-size 0.3s;
+}
+
+nav a:hover {
+    color: var(--interaction-color);
+}
+
+
+.banner {
+    position: relative;
+    width: 100%; /* Full width of the viewport */
+    max-width: 1200px; /* Matches the max-width of .section */
+    max-height: 400px; /* Default height for larger screens */
+    margin: 0 auto 20px; /* Centers the banner horizontally with bottom margin */
+    overflow: hidden; /* Prevent image overflow */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; /* Center the image horizontally */
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-color); /* Use primary color */
+    opacity: 0.8; /* Semi-transparent */
+    z-index: 1;
+}
+.banner img {
+    width: 100%; /* Image fills the banner container */
+    height: 100%; /* Maintain height */
+    object-fit: contain; /* Ensures the entire image fits without cropping */
+    display: block;
+}
+
+.banner-logo {
+    position: absolute; /* Place logo on top of the banner */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust centering */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 450px; /* Restrict logo width */
+    z-index: 10; /* Ensures the logo appears above the banner image */
+}
+
+main {
+    padding: 20px;
+}
+
+.section {
+    display: flex; /* Aligns image and text side by side */
+    gap: 20px; /* Space between image and text */
+    max-width: 1200px; /* Limits the section width for readability */
+    margin: 0 auto; /* Centers the section horizontally */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.text {
+    flex: 1;
+    padding: 10px;
+    background-color: #FFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--primary-color);
+}
+
+.text h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.about-image, .history-image {
+    flex: 1; /* Allow the image container to scale proportionally */
+    max-width: auto; /* Limit the image width to half of the section */
+}
+
+.about-image img, .history-image img {
+    width: 100%; /* Make the image fill the container width */
+    height: auto; /* Maintain the aspect ratio of the image */
+    display: block; /* Prevent any inline element spacing issues */
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--hover-color);
+}
+
+footer span {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .nav-logo {
+        height: 40px; /* Smaller logo on smaller screens */
+        
+    }
+    
+    .burger-menu {
+        display: block; /* Show the burger menu */
+        font-size: 30px;
+        color: #FFF; /* Match navbar text color */
+        cursor: pointer;
+        padding: 10px;
+        z-index: 11; /* Ensure it’s above the nav */
+    }
+
+    nav#navLinks {
+        display: none; /* Default hidden */
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px;
+    }
+    
+    nav#navLinks.active {
+        display: flex; /* Show nav links when active */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack links for small screens */
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav a {
+        font-size: 18px; /* Adjust size for smaller screens */
+        text-align: center; /* Center-align the links */
+    }
+
+    .section {
+        flex-direction: column;
+    }
+
+    .about-img, .history-img {
+        max-width: 100%;
+    }
+
+    .banner {
+        max-height: 200px; /* Reduce the height for smaller screens */
+    }
+
+    .banner img {
+        width: 100%; /* Ensure the image resizes proportionally */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .banner-logo {
+        max-width: 250px; /* Smaller logo on tablets */
+    }
+
+    
+}
+
+@media (min-width: 769px) {
+
+    .burger-menu {
+        display: none; /* Hide the burger menu */
+    }
+
+    nav#navLinks {
+        display: flex; /* Show nav links by default */
+        flex-direction: row;
+        gap: 30px;
+    }
+    
+    nav a {
+        font-size: 18px; /* Adjust font size for larger screens */
+    }
+}

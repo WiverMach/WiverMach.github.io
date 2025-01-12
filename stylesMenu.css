@@ -1,0 +1,124 @@
+@import url('styles.css'); /* Import global styles */
+
+/* Menu Page Specific Styles */
+
+.banner {
+    align-items: center;
+}
+
+/* General Page Styles */
+h2 {
+    text-align: center;
+    color: var(--primary-color); /* Olive Green from global styles */
+    margin-bottom: 20px;
+}
+
+/* Container for Meals and Beverages */
+.menu-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    margin-top: 20px;
+    
+}
+
+.menu-item {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent-color); /* Use global accent color */
+}
+
+.menu-item h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    color: var(--primary-color); /* Olive Green */
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: var(--text-color); /* Dark Brown */
+    padding: 0 10px;
+    margin: 5px 0 10px;
+}
+
+.menu-item span {
+    display: block;
+    font-weight: bold;
+    color: var(--accent-color); /* Warm Golden Tone */
+    font-size: 16px;
+}
+
+/* Table Styles for Beverages */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #DDD;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--primary-color); /* Olive Green */
+    color: #FFF;
+    font-size: 18px;
+}
+
+td {
+    font-size: 16px;
+    color: var(--text-color); /* Dark Brown */
+}
+
+tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .menu-item h3 {
+        font-size: 18px;
+    }
+
+    .menu-item img {
+        height: 150px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}

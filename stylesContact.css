@@ -1,0 +1,144 @@
+@import url('styles.css'); /* Import global styles */
+
+/* General Section Styles */
+.enquiry-form, .branches {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.enquiry-form h2, .branches h2 {
+    text-align: center;
+    color: var(--primary-color); /* Olive Green */
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 10px); /* Two columns */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color); /* Dark Brown */
+}
+
+.form-group input, .form-group textarea {
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #FFF;
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary-color); /* Olive Green focus effect */
+    outline: none;
+}
+
+textarea {
+    resize: none; /* Prevent resizing */
+}
+
+button {
+    flex: 1 1 100%; /* Full width */
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #FFF;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--hover-color); /* Darker Olive */
+}
+
+/* Branch Section */
+#branches-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.branch {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.branch:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.branch h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: var(--primary-color); /* Olive Green */
+}
+
+.branch p {
+    font-size: 14px;
+    margin: 10px 0;
+    color: var(--text-color); /* Dark Brown */
+}
+
+.branch a {
+    text-decoration: none;
+    color: var(--accent-color); /* Golden Tone */
+    font-weight: bold;
+}
+
+.branch a:hover {
+    color: var(--hover-color); /* Darker Golden */
+}
+
+.branch iframe {
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #DDD;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        flex-direction: column; /* Stack fields vertically */
+    }
+
+    .form-group {
+        flex: 1 1 100%; /* Full width */
+    }
+
+    #branches-container {
+        flex-direction: column; /* Stack branches vertically */
+        align-items: center;
+    }
+
+    .branch {
+        max-width: 100%;
+    }
+}
